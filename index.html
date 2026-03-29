@@ -109,7 +109,6 @@
   .top-subnav-right {
     display: flex; align-items: center; gap: 14px;
   }
-  /* Dark mode toggle in subnav */
   .dark-toggle {
     width: 44px; height: 22px; border-radius: 11px;
     background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25);
@@ -130,7 +129,6 @@
   }
   .dark-toggle-wrap { display: flex; align-items: center; gap: 7px; }
 
-  /* Start Your Journey btn in subnav */
   .btn-subnav {
     padding: 5px 16px;
     background: var(--red);
@@ -159,7 +157,6 @@
     box-shadow: 0 2px 24px rgba(0,0,0,0.08);
   }
 
-  /* When scrolled, subnav hides and nav moves to top */
   body.nav-scrolled .top-subnav {
     transform: translateY(-100%);
     pointer-events: none;
@@ -170,14 +167,13 @@
 
   .nav-logo {
     font-family: var(--font-display);
-    font-size: 26px; font-weight: 700; color: var(--hero-text);
+    font-size: 24px; font-weight: 700; color: var(--hero-text);
     letter-spacing: 0.02em; text-decoration: none; cursor: pointer;
     transition: color 0.3s; flex-shrink: 0;
   }
   nav.scrolled .nav-logo { color: var(--white); }
   .nav-logo span { color: var(--red); }
 
-  /* Centered links */
   .nav-links {
     display: flex; align-items: center; gap: 4px; list-style: none;
     position: absolute; left: 50%; transform: translateX(-50%);
@@ -200,7 +196,6 @@
   .dropdown-arrow { font-size: 9px; transition: transform 0.2s; }
   .nav-item:hover .dropdown-arrow { transform: rotate(180deg); }
 
-  /* Dropdown */
   .dropdown {
     position: absolute; top: calc(100% + 8px); left: 50%; transform: translateX(-50%);
     background: var(--nav-bg); border: 1px solid var(--nav-border);
@@ -220,7 +215,6 @@
   .dropdown-icon { font-size: 16px; width: 24px; text-align: center; }
   .dropdown-divider { height: 1px; background: var(--nav-border); margin: 6px 0; }
 
-  /* Hamburger (mobile) */
   .hamburger {
     display: none; flex-direction: column; gap: 5px; cursor: pointer;
     background: none; border: none; padding: 4px;
@@ -234,7 +228,6 @@
   .hamburger.open span:nth-child(2) { opacity: 0; }
   .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
 
-  /* Mobile nav drawer */
   .mobile-nav {
     display: none; position: fixed; top: 104px; left: 0; right: 0; z-index: 999;
     background: var(--nav-bg); border-bottom: 1px solid var(--nav-border);
@@ -266,7 +259,6 @@
   .hero {
     position: relative; min-height: 100vh;
     display: flex; flex-direction: column; justify-content: center; overflow: hidden;
-    /* account for subnav + nav height */
   }
   .hero-bg {
     position: absolute; inset: 0;
@@ -316,7 +308,7 @@
   .stat-num { font-family: var(--font-display); font-size: 36px; font-weight: 700; color: #ff8fa0; }
   .stat-label { font-size: 12px; font-weight: 500; color: rgba(255,255,255,0.6); letter-spacing: 0.08em; text-transform: uppercase; }
 
-  /* ── SEARCH FLIGHT BANNER ── */
+  /* ── SEARCH BANNER ── */
   .search-banner {
     position: relative; z-index: 10; margin-top: -2px;
     background: var(--navy);
@@ -350,6 +342,83 @@
   .feature-chip:hover { background: var(--card-bg); border-color: var(--red); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(200,16,46,0.12); }
   .chip-icon { font-size: 22px; }
   .chip-text { font-size: 13px; font-weight: 600; color: var(--off-white); letter-spacing: 0.02em; }
+
+  /* ── PARTNERS SECTION ── */
+  .partners-section {
+    padding: 72px 48px;
+    background: var(--section-alt);
+    border-top: 1px solid var(--card-border);
+    border-bottom: 1px solid var(--card-border);
+  }
+  .partners-inner { max-width: 1200px; margin: 0 auto; }
+  .partners-header {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 48px; flex-wrap: wrap; gap: 20px;
+  }
+  .partners-headline { font-family: var(--font-display); font-size: clamp(28px, 4vw, 44px); font-weight: 600; color: var(--white); line-height: 1.1; }
+  .partners-headline em { font-style: italic; color: var(--red); }
+  .partners-stat-pill {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 12px 24px; background: var(--navy); border-radius: 100px;
+    border: 1px solid rgba(200,16,46,0.3);
+  }
+  [data-theme="dark"] .partners-stat-pill { background: rgba(0,48,135,0.3); }
+  .partners-stat-num { font-family: var(--font-display); font-size: 28px; font-weight: 700; color: #ff8fa0; line-height: 1; }
+  .partners-stat-label { font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.7); text-transform: uppercase; letter-spacing: 0.08em; }
+  .partners-stat-desc { font-size: 11px; color: rgba(255,255,255,0.45); margin-top: 2px; }
+
+  .partners-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+  .partners-col-title {
+    font-size: 11px; font-weight: 800; color: var(--red);
+    letter-spacing: 0.14em; text-transform: uppercase;
+    margin-bottom: 20px; display: flex; align-items: center; gap: 10px;
+  }
+  .partners-col-title::after { content: ''; flex: 1; height: 1px; background: rgba(200,16,46,0.25); }
+
+  /* Trusted Partners logos - text-based clean design */
+  .partner-logos {
+    display: flex; flex-wrap: wrap; gap: 10px;
+  }
+  .partner-tag {
+    display: inline-flex; align-items: center;
+    padding: 8px 16px;
+    background: var(--card-bg);
+    border: var(--card-border);
+    border-radius: 6px;
+    font-size: 12px; font-weight: 700;
+    color: var(--off-white);
+    letter-spacing: 0.03em;
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+  .partner-tag:hover { border-color: rgba(200,16,46,0.4); color: var(--red); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,48,135,0.1); }
+  .partner-tag.iata { border-left: 3px solid #003087; }
+  .partner-tag.airline { border-left: 3px solid var(--red); }
+  .partner-tag.tech { border-left: 3px solid #2a9b5a; }
+  .partner-tag.assoc { border-left: 3px solid #c2a35a; }
+
+  /* Popular airlines ticker */
+  .popular-airlines-row {
+    margin-top: 8px;
+    padding: 20px 0;
+    border-top: 1px solid var(--card-border);
+  }
+  .popular-airlines-label {
+    font-size: 11px; font-weight: 800; color: var(--text-muted);
+    letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 14px;
+  }
+  .airlines-ticker { display: flex; flex-wrap: wrap; gap: 8px; }
+  .airline-pill {
+    padding: 6px 14px;
+    border-radius: 100px;
+    background: var(--card-bg);
+    border: var(--card-border);
+    font-size: 12px; font-weight: 600;
+    color: var(--text-muted);
+    white-space: nowrap;
+    transition: all 0.2s;
+  }
+  .airline-pill:hover { border-color: var(--red); color: var(--red); }
 
   /* ── SECTION COMMONS ── */
   .section-inner { max-width: 1200px; margin: 0 auto; }
@@ -525,7 +594,7 @@
   footer { background: var(--navy); border-top: 1px solid rgba(255,255,255,0.1); padding: 64px 48px 32px; }
   [data-theme="dark"] footer { background: #05050f; }
   .footer-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 48px; padding-bottom: 48px; border-bottom: 1px solid rgba(255,255,255,0.12); margin-bottom: 32px; }
-  .footer-brand-logo { font-family: var(--font-display); font-size: 28px; font-weight: 700; color: #ffffff; margin-bottom: 12px; }
+  .footer-brand-logo { font-family: var(--font-display); font-size: 26px; font-weight: 700; color: #ffffff; margin-bottom: 12px; }
   .footer-brand-logo span { color: #ff8fa0; }
   .footer-tagline { font-size: 14px; color: rgba(255,255,255,0.6); line-height: 1.6; margin-bottom: 24px; max-width: 280px; }
   .social-links { display: flex; gap: 12px; }
@@ -738,6 +807,8 @@
     .book-tabs-full { grid-template-columns: repeat(2, 1fr); }
     .search-banner-inner { flex-direction: column; align-items: flex-start; gap: 20px; }
     .nav-links { position: static; transform: none; }
+    .partners-grid { grid-template-columns: 1fr; gap: 24px; }
+    .partners-header { flex-direction: column; align-items: flex-start; }
   }
   @media (max-width: 768px) {
     .top-subnav { padding: 0 16px; }
@@ -748,6 +819,7 @@
     .hero-content { padding: 0 20px; padding-top: 120px; }
     .search-banner, .features-strip, .services-section, .destinations-section, .medical-section, .ai-section, .visa-section, .testimonials-section, .rova-section, footer { padding-left: 20px; padding-right: 20px; }
     .page-hero, .book-section, .contact-section, .blog-section, .corp-section, .dest-page-section, .med-page-section, .visa-page-section { padding-left: 20px; padding-right: 20px; }
+    .partners-section { padding-left: 20px; padding-right: 20px; }
     .ai-grid, .services-grid, .testimonials-grid, .dest-full-grid, .blog-grid, .corp-solutions, .offices-grid { grid-template-columns: 1fr; }
     .destinations-grid, .medical-grid, .med-countries-grid, .plans-grid, .visa-countries-grid { grid-template-columns: 1fr; }
     .dest-card:first-child { grid-row: span 1; }
@@ -764,6 +836,7 @@
     .btn-primary, .btn-outline { width: 100%; justify-content: center; }
     .mobile-nav { top: 96px; }
     body.nav-scrolled .mobile-nav { top: 56px; }
+    .partners-grid { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -793,7 +866,7 @@
 
 <!-- ── MAIN NAV ── -->
 <nav id="navbar">
-  <div class="nav-logo" onclick="showPage('home')">R-Pro<span>.</span></div>
+  <div class="nav-logo" onclick="showPage('home')">R-Pro Travels<span>.</span></div>
   <ul class="nav-links">
     <li><a onclick="showPage('home')" style="cursor:pointer;">Home</a></li>
     <li class="nav-item">
@@ -879,14 +952,88 @@
 <!-- FEATURES STRIP -->
 <section class="features-strip">
   <div class="strip-inner">
-    <div class="feature-chip"><span class="chip-icon">📊</span><span class="chip-text">Price Watch</span></div>
-    <div class="feature-chip"><span class="chip-icon">💳</span><span class="chip-text">Pay Small Small</span></div>
-    <div class="feature-chip"><span class="chip-icon">⚡</span><span class="chip-text">Last-Minute Deals</span></div>
-    <div class="feature-chip"><span class="chip-icon">📱</span><span class="chip-text">Travel SIM</span></div>
-    <div class="feature-chip"><span class="chip-icon">💴</span><span class="chip-text">Prepaid Card</span></div>
-    <div class="feature-chip"><span class="chip-icon">⭐</span><span class="chip-text">R-Pro Rewards</span></div>
-    <div class="feature-chip"><span class="chip-icon">📲</span><span class="chip-text">Mobile App</span></div>
-    <div class="feature-chip"><span class="chip-icon">🤖</span><span class="chip-text">Rova AI</span></div>
+    <div class="feature-chip"><span class="chip-text">Price Watch</span></div>
+    <div class="feature-chip"><span class="chip-text">Pay Small Small</span></div>
+    <div class="feature-chip"><span class="chip-text">Last-Minute Deals</span></div>
+    <div class="feature-chip"><span class="chip-text">Travel SIM</span></div>
+    <div class="feature-chip"><span class="chip-text">Prepaid Card</span></div>
+    <div class="feature-chip"><span class="chip-text">R-Pro Rewards</span></div>
+    <div class="feature-chip"><span class="chip-text">Mobile App</span></div>
+    <div class="feature-chip"><span class="chip-text">Rova AI</span></div>
+  </div>
+</section>
+
+<!-- TRUSTED PARTNERS SECTION -->
+<section class="partners-section">
+  <div class="partners-inner">
+    <div class="partners-header">
+      <div>
+        <p class="section-label">Our Network</p>
+        <h2 class="partners-headline">Trusted Partners &<br><em>Global Airlines</em></h2>
+      </div>
+      <div style="display:flex;gap:16px;flex-wrap:wrap;align-items:center;">
+        <div class="partners-stat-pill">
+          <div>
+            <div class="partners-stat-num">400+</div>
+            <div class="partners-stat-label">Global Airlines</div>
+            <div class="partners-stat-desc">International & Local</div>
+          </div>
+        </div>
+        <div class="partners-stat-pill">
+          <div>
+            <div class="partners-stat-num">100k+</div>
+            <div class="partners-stat-label">Tickets Booked</div>
+            <div class="partners-stat-desc">International & local</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="partners-grid">
+      <!-- Trusted Partners -->
+      <div>
+        <div class="partners-col-title">Trusted Partners & Accreditations</div>
+        <div class="partner-logos">
+          <span class="partner-tag iata">IATA</span>
+          <span class="partner-tag assoc">NANTA</span>
+          <span class="partner-tag tech">Amadeus IT Group</span>
+          <span class="partner-tag iata">NCAA</span>
+          <span class="partner-tag airline">Emirates</span>
+          <span class="partner-tag airline">Qatar Airways</span>
+          <span class="partner-tag airline">British Airways</span>
+          <span class="partner-tag airline">Turkish Airlines</span>
+          <span class="partner-tag airline">Ethiopian Airlines</span>
+          <span class="partner-tag airline">Air Peace</span>
+          <span class="partner-tag airline">Ibom Air</span>
+          <span class="partner-tag tech">Paystack</span>
+          <span class="partner-tag tech">Flutterwave</span>
+        </div>
+      </div>
+
+      <!-- Popular Airlines -->
+      <div>
+        <div class="partners-col-title">Popular Airlines We Book</div>
+        <div class="airlines-ticker">
+          <span class="airline-pill">Air France</span>
+          <span class="airline-pill">Air Maroc</span>
+          <span class="airline-pill">Lufthansa</span>
+          <span class="airline-pill">Air Peace</span>
+          <span class="airline-pill">United Airlines</span>
+          <span class="airline-pill">Enugu Air</span>
+          <span class="airline-pill">Xejet</span>
+          <span class="airline-pill">Ibom Air</span>
+          <span class="airline-pill">Emirates</span>
+          <span class="airline-pill">Qatar Airways</span>
+          <span class="airline-pill">Turkish Airlines</span>
+          <span class="airline-pill">Ethiopian Airlines</span>
+          <span class="airline-pill">British Airways</span>
+          <span class="airline-pill">Kenya Airways</span>
+          <span class="airline-pill">KLM Royal Dutch</span>
+          <span class="airline-pill">Delta Airlines</span>
+          <span class="airline-pill">and many more…</span>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -955,7 +1102,7 @@
     <h2 class="section-heading">6 Live AI Tools<br>Built <em>For You</em></h2>
     <p class="section-sub">Powered by Claude AI — instant answers on visas, costs, documents and destinations.</p>
     <div class="ai-grid">
-      <div class="ai-card"><div class="ai-card-badge"><div class="ai-dot"></div> Live AI</div><div class="ai-card-icon">🛂</div><h3 class="ai-card-title">Visa Checker</h3><p class="ai-card-desc">Instant visa requirements for 50+ destinations. Processing time, government fees, and R-Pro service fees in Naira.</p><span class="ai-card-link">Check Now →</span></div>
+      <div class="ai-card"><div class="ai-card-badge"><div class="ai-dot"></div> Live AI</div><div class="ai-card-icon">🛂</div><h3 class="ai-card-title">Visa Checker</h3><p class="ai-card-desc">Instant visa requirements for 50+ destinations. Processing time, government fees, and R-Pro Travels service fees in Naira.</p><span class="ai-card-link">Check Now →</span></div>
       <div class="ai-card"><div class="ai-card-badge"><div class="ai-dot"></div> Live AI</div><div class="ai-card-icon">💰</div><h3 class="ai-card-title">Cost Estimator</h3><p class="ai-card-desc">Full Naira breakdown — visa, flights, hotels, daily costs and money-saving tips for any destination.</p><span class="ai-card-link">Estimate Now →</span></div>
       <div class="ai-card"><div class="ai-card-badge"><div class="ai-dot"></div> Live AI</div><div class="ai-card-icon">🏥</div><h3 class="ai-card-title">Medical Matcher</h3><p class="ai-card-desc">Describe your condition and budget — AI recommends your top 3 treatment countries with full package estimates.</p><span class="ai-card-link">Find Match →</span></div>
       <div class="ai-card"><div class="ai-card-badge"><div class="ai-dot"></div> Live AI</div><div class="ai-card-icon">📄</div><h3 class="ai-card-title">Document Scanner</h3><p class="ai-card-desc">Tick your documents, get a readiness score out of 100 — with critical gaps and improvement tips.</p><span class="ai-card-link">Scan Docs →</span></div>
@@ -975,9 +1122,9 @@
       <div class="plan-card"><div class="plan-name">Plan A</div><div class="plan-title">African Tourist</div><div class="plan-price">₦150,000 – ₦250,000</div><ul class="plan-features"><li>African destination visas</li><li>Document checklist & review</li><li>Application submission</li><li>Status tracking</li><li>WhatsApp support</li></ul><button class="btn-plan">Get Started</button></div>
       <div class="plan-card featured"><div class="plan-badge">Most Popular</div><div class="plan-name">Plan B</div><div class="plan-title">Global Tourist</div><div class="plan-price">₦250,000 – ₦650,000 per destination</div><ul class="plan-features"><li>UK, Schengen, US, Canada & more</li><li>Full document preparation</li><li>Cover letter included</li><li>Interview coaching</li><li>Priority processing</li></ul><button class="btn-plan">Get Started</button></div>
       <div class="plan-card"><div class="plan-name">Plan C</div><div class="plan-title">Study Permit</div><div class="plan-price">₦450,000 flat rate</div><ul class="plan-features"><li>Student visa facilitation</li><li>Admission letter guidance</li><li>Financial statement review</li><li>Embassy interview prep</li><li>Dedicated consultant</li></ul><button class="btn-plan">Get Started</button></div>
-      <div class="plan-card"><div class="plan-name">Plan D</div><div class="plan-title">Study + Work</div><div class="plan-price">₦550,000 flat rate</div><ul class="plan-features"><li>Study + Work Placement visa</li><li>Job offer letter coordination</li><li>Complete document package</li><li>Post-arrival support</li><li>Dedicated consultant</li></ul><button class="btn-plan">Get Started</button></div>
+      <div class="plan-card"><div class="plan-name">Plan D</div><div class="plan-title">Study + Work</div><div class="plan-price">₦550,000 flat rate</div><ul class="plan-features"><li>Study + Work Visa Processing</li><li>Complete document package</li><li>Post-arrival support</li><li>Dedicated consultant</li></ul><button class="btn-plan">Get Started</button></div>
     </div>
-    <p style="text-align:center;margin-top:24px;font-size:12px;color:var(--text-muted);">✦ Government fees are charged separately ✦ R-Pro provides facilitation services only ✦ Visa approval is at the discretion of the issuing authority</p>
+    <p style="text-align:center;margin-top:24px;font-size:12px;color:var(--text-muted);">✦ Government fees are charged separately ✦ R-Pro Travels provides facilitation services only ✦ Visa approval is at the discretion of the issuing authority</p>
   </div>
 </section>
 
@@ -999,7 +1146,7 @@
       <div class="chat-widget">
         <div class="chat-header"><div class="chat-avatar">🤖</div><div><div class="chat-name">Rova AI</div><div class="chat-status"><span class="chat-online"></span> Online — Powered by Claude</div></div></div>
         <div class="chat-messages">
-          <div class="msg"><div class="msg-bubble ai">Hi! I'm Rova, your R-Pro AI travel assistant. I can help with visas, medical tourism, trip costs, and bookings. What are you planning? ✈️</div></div>
+          <div class="msg"><div class="msg-bubble ai">Hi! I'm Rova, your R-Pro Travels AI travel assistant. I can help with visas, medical tourism, trip costs, and bookings. What are you planning? ✈️</div></div>
           <div class="msg user"><div class="msg-bubble user">I want to travel to the UK for a medical procedure. What visa do I need?</div></div>
           <div class="msg"><div class="typing"><div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div></div></div>
         </div>
@@ -1026,12 +1173,12 @@
     <h2 class="section-heading">Trusted by <em>Thousands</em></h2>
     <p class="section-sub">Real travellers, real results — from Lagos to London and beyond.</p>
     <div class="testimonials-grid" style="margin-top:48px;">
-      <div class="testi-card"><div class="testi-stars">★★★★★</div><p class="testi-quote">"R-Pro handled my UK visa from start to finish. I was approved in 3 weeks. The Rova AI even coached me on my bank statement preparation!"</p><div class="testi-author"><div class="testi-avatar">👩</div><div><div class="testi-name">Adaeze Okoye</div><div class="testi-role">UK Tourist Visa · Lagos</div></div></div></div>
-      <div class="testi-card"><div class="testi-stars">★★★★★</div><p class="testi-quote">"The medical tourism package to India was life-changing. R-Pro arranged everything — visa, flights, hospital, hotel. Paid with Pay Small Small too."</p><div class="testi-author"><div class="testi-avatar">👨</div><div><div class="testi-name">Emeka Nwosu</div><div class="testi-role">Medical Tourism · India</div></div></div></div>
-      <div class="testi-card"><div class="testi-stars">★★★★★</div><p class="testi-quote">"Our company uses R-Pro for all 47 staff visas annually. The corporate retainer saves us 20% and we always get priority processing."</p><div class="testi-author"><div class="testi-avatar">👩‍💼</div><div><div class="testi-name">Ngozi Balogun</div><div class="testi-role">Corporate Account · Abuja</div></div></div></div>
-      <div class="testi-card"><div class="testi-stars">★★★★★</div><p class="testi-quote">"Got my Schengen visa in 10 days with R-Pro. Their AI cover letter generator is brilliant — my letter was perfect and the consul said so!"</p><div class="testi-author"><div class="testi-avatar">👦</div><div><div class="testi-name">Tunde Adeleke</div><div class="testi-role">Schengen Visa · Port Harcourt</div></div></div></div>
+      <div class="testi-card"><div class="testi-stars">★★★★★</div><p class="testi-quote">"R-Pro Travels handled my UK visa from start to finish. I was approved in 3 weeks. The Rova AI even coached me on my bank statement preparation!"</p><div class="testi-author"><div class="testi-avatar">👩</div><div><div class="testi-name">Adaeze Okoye</div><div class="testi-role">UK Tourist Visa · Lagos</div></div></div></div>
+      <div class="testi-card"><div class="testi-stars">★★★★★</div><p class="testi-quote">"The medical tourism package to India was life-changing. R-Pro Travels arranged everything — visa, flights, hospital, hotel. Paid with Pay Small Small too."</p><div class="testi-author"><div class="testi-avatar">👨</div><div><div class="testi-name">Emeka Nwosu</div><div class="testi-role">Medical Tourism · India</div></div></div></div>
+      <div class="testi-card"><div class="testi-stars">★★★★★</div><p class="testi-quote">"Our company uses R-Pro Travels for all 47 staff visas annually. The corporate retainer saves us 20% and we always get priority processing."</p><div class="testi-author"><div class="testi-avatar">👩‍💼</div><div><div class="testi-name">Ngozi Balogun</div><div class="testi-role">Corporate Account · Abuja</div></div></div></div>
+      <div class="testi-card"><div class="testi-stars">★★★★★</div><p class="testi-quote">"Got my Schengen visa in 10 days with R-Pro Travels. Their AI cover letter generator is brilliant — my letter was perfect and the consul said so!"</p><div class="testi-author"><div class="testi-avatar">👦</div><div><div class="testi-name">Tunde Adeleke</div><div class="testi-role">Schengen Visa · Port Harcourt</div></div></div></div>
       <div class="testi-card"><div class="testi-stars">★★★★★</div><p class="testi-quote">"I used the Pay Small Small option for my Dubai holiday package. ₦120k deposit and paid the rest in 3 instalments. No stress at all!"</p><div class="testi-author"><div class="testi-avatar">👩</div><div><div class="testi-name">Fatima Al-Hassan</div><div class="testi-role">Dubai Holiday Package · Kano</div></div></div></div>
-      <div class="testi-card"><div class="testi-stars">★★★★★</div><p class="testi-quote">"The Rova AI told me everything I needed for my Canada study permit — documents, fees, timeline. R-Pro submitted and I got approved first try."</p><div class="testi-author"><div class="testi-avatar">👦</div><div><div class="testi-name">Samuel Obi</div><div class="testi-role">Canada Study Permit · Enugu</div></div></div></div>
+      <div class="testi-card"><div class="testi-stars">★★★★★</div><p class="testi-quote">"The Rova AI told me everything I needed for my Canada study permit — documents, fees, timeline. R-Pro Travels submitted and I got approved first try."</p><div class="testi-author"><div class="testi-avatar">👦</div><div><div class="testi-name">Samuel Obi</div><div class="testi-role">Canada Study Permit · Enugu</div></div></div></div>
     </div>
   </div>
 </section>
@@ -1040,7 +1187,7 @@
 <footer>
   <div class="footer-grid">
     <div>
-      <div class="footer-brand-logo">R-Pro<span>.</span></div>
+      <div class="footer-brand-logo">R-Pro Travels<span>.</span></div>
       <p class="footer-tagline">Africa's most comprehensive travel partner — visa, medical, flights, hotels and AI tools, all in one platform.</p>
       <div class="social-links">
         <a class="social-btn">𝕏</a><a class="social-btn">in</a><a class="social-btn">f</a><a class="social-btn">ig</a><a class="social-btn">💬</a>
@@ -1080,7 +1227,7 @@
   </div>
   <div class="footer-bottom">
     <p class="footer-copy">© 2026 R-Pro Travels and Tours Limited. All rights reserved.</p>
-    <p class="footer-disclaimer">R-Pro provides visa facilitation services only. We do not issue visas. All approval decisions rest with the relevant embassy or consulate.</p>
+    <p class="footer-disclaimer">R-Pro Travels provides visa facilitation services only. We do not issue visas. All approval decisions rest with the relevant embassy or consulate.</p>
   </div>
 </footer>
 </div><!-- /home page -->
@@ -1143,7 +1290,7 @@
     <div>
       <p class="section-label">AI-Powered</p>
       <h2 class="section-heading">Instant <em>Visa Checker</em></h2>
-      <p class="section-sub">Get instant visa requirements, processing times and R-Pro fees for any destination — in seconds.</p>
+      <p class="section-sub">Get instant visa requirements, processing times and R-Pro Travels fees for any destination — in seconds.</p>
       <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:8px;">
         <div style="background:var(--card-bg);border:var(--card-border);border-radius:8px;padding:16px;"><div style="font-size:24px;margin-bottom:6px;">⚡</div><div style="font-weight:700;color:var(--white);font-size:14px;">Instant Results</div><div style="font-size:12px;color:var(--text-muted);">No waiting, live AI answers</div></div>
         <div style="background:var(--card-bg);border:var(--card-border);border-radius:8px;padding:16px;"><div style="font-size:24px;margin-bottom:6px;">💰</div><div style="font-weight:700;color:var(--white);font-size:14px;">Full Cost Breakdown</div><div style="font-size:12px;color:var(--text-muted);">In Naira, Dollars or Pounds</div></div>
@@ -1167,7 +1314,7 @@
       <div class="plan-card"><div class="plan-name">Plan A</div><div class="plan-title">African Tourist</div><div class="plan-price">₦150,000 – ₦250,000</div><ul class="plan-features"><li>African destination visas</li><li>Document checklist & review</li><li>Application submission</li><li>Status tracking</li><li>WhatsApp support</li></ul><button class="btn-plan">Get Started</button></div>
       <div class="plan-card featured"><div class="plan-badge">Most Popular</div><div class="plan-name">Plan B</div><div class="plan-title">Global Tourist</div><div class="plan-price">₦250,000 – ₦650,000</div><ul class="plan-features"><li>UK, Schengen, US, Canada & more</li><li>Full document preparation</li><li>Cover letter included</li><li>Interview coaching</li><li>Priority processing</li></ul><button class="btn-plan">Get Started</button></div>
       <div class="plan-card"><div class="plan-name">Plan C</div><div class="plan-title">Study Permit</div><div class="plan-price">₦450,000 flat rate</div><ul class="plan-features"><li>Student visa facilitation</li><li>Admission letter guidance</li><li>Financial statement review</li><li>Embassy interview prep</li><li>Dedicated consultant</li></ul><button class="btn-plan">Get Started</button></div>
-      <div class="plan-card"><div class="plan-name">Plan D</div><div class="plan-title">Study + Work</div><div class="plan-price">₦550,000 flat rate</div><ul class="plan-features"><li>Study + Work Placement visa</li><li>Job offer letter coordination</li><li>Complete document package</li><li>Post-arrival support</li><li>Dedicated consultant</li></ul><button class="btn-plan">Get Started</button></div>
+      <div class="plan-card"><div class="plan-name">Plan D</div><div class="plan-title">Study + Work</div><div class="plan-price">₦550,000 flat rate</div><ul class="plan-features"><li>Study + Work Visa Processing</li><li>Complete document package</li><li>Post-arrival support</li><li>Dedicated consultant</li></ul><button class="btn-plan">Get Started</button></div>
     </div>
   </div>
   <div style="max-width:1200px;margin:0 auto;">
@@ -1208,7 +1355,7 @@
     <div>
       <p class="section-label">Why Choose Us</p>
       <h2 class="section-heading">Your Full<br><em>Medical Journey</em></h2>
-      <p class="section-sub">From your first consultation to your safe return home — R-Pro manages every step.</p>
+      <p class="section-sub">From your first consultation to your safe return home — R-Pro Travels manages every step.</p>
       <div style="display:flex;flex-direction:column;gap:12px;">
         <div class="rova-feat" style="background:var(--card-bg);border:var(--card-border);"><div class="rova-feat-icon">🏥</div><div><div class="rova-feat-title" style="color:var(--white);">Hospital Matching</div><div class="rova-feat-desc" style="color:var(--text-muted);">AI matches your condition to the best hospital in the best country for your budget</div></div></div>
         <div class="rova-feat" style="background:var(--card-bg);border:var(--card-border);"><div class="rova-feat-icon">🛂</div><div><div class="rova-feat-title" style="color:var(--white);">Medical Visa Fast-Track</div><div class="rova-feat-desc" style="color:var(--text-muted);">We expedite medical visas with hospital invitation letters and all supporting documents</div></div></div>
@@ -1251,7 +1398,7 @@
     <div class="steps-row">
       <div class="step"><div class="step-num">1</div><div class="step-title">Describe</div><div class="step-desc">Tell Rova AI your condition and budget</div></div>
       <div class="step"><div class="step-num">2</div><div class="step-title">Match</div><div class="step-desc">AI matches you to the best 3 countries</div></div>
-      <div class="step"><div class="step-num">3</div><div class="step-title">Visa</div><div class="step-desc">R-Pro facilitates your medical visa</div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-title">Visa</div><div class="step-desc">R-Pro Travels facilitates your medical visa</div></div>
       <div class="step"><div class="step-num">4</div><div class="step-title">Travel</div><div class="step-desc">Flights + hotel + hospital all booked</div></div>
       <div class="step"><div class="step-num">5</div><div class="step-title">Recover</div><div class="step-desc">We track from departure to discharge</div></div>
     </div>
@@ -1311,7 +1458,7 @@
     <p class="section-sub">From SMEs to multinationals — tailored travel solutions that save time, reduce costs and eliminate headaches.</p>
   </div>
   <div class="corp-solutions">
-    <div class="corp-card"><div class="corp-card-icon">📋</div><div class="corp-card-title">Bulk Visa Processing</div><div class="corp-card-desc">Process multiple visas simultaneously with dedicated R-Pro consultants and priority embassy slots.</div></div>
+    <div class="corp-card"><div class="corp-card-icon">📋</div><div class="corp-card-title">Bulk Visa Processing</div><div class="corp-card-desc">Process multiple visas simultaneously with dedicated R-Pro Travels consultants and priority embassy slots.</div></div>
     <div class="corp-card"><div class="corp-card-icon">🔄</div><div class="corp-card-title">Annual Retainer</div><div class="corp-card-desc">One annual fee covers unlimited visa consultations, discounted processing fees and dedicated account management — 20% average savings.</div></div>
     <div class="corp-card"><div class="corp-card-icon">🏢</div><div class="corp-card-title">NGO & Embassy Support</div><div class="corp-card-desc">Specialised facilitation for NGOs, embassies and diplomatic missions — including diplomatic note coordination.</div></div>
     <div class="corp-card"><div class="corp-card-icon">🌍</div><div class="corp-card-title">Expat Quota Management</div><div class="corp-card-desc">We manage your CERPAC applications, expatriate quota renewals and all NIS compliance.</div></div>
@@ -1359,7 +1506,7 @@
   <div class="page-hero-inner">
     <div class="page-hero-label">Our Services</div>
     <h1>Everything You Need,<br><em>One Platform</em></h1>
-    <p>From your first visa to your final boarding pass — R-Pro is the only travel partner you'll ever need in Africa.</p>
+    <p>From your first visa to your final boarding pass — R-Pro Travels is the only travel partner you'll ever need in Africa.</p>
   </div>
 </div>
 <section class="services-section" style="padding-top:80px;">
@@ -1447,21 +1594,21 @@
       <div class="blog-featured-badge">⭐ Featured Article</div>
       <div class="blog-featured-title">The Complete Nigerian Guide to Getting a UK Visa in 2026</div>
       <div class="blog-featured-excerpt">Everything you need to know — from financial requirements and bank statement preparation to cover letters and the new digital application process.</div>
-      <div style="font-size:12px;color:var(--text-muted);margin-bottom:24px;">By R-Pro Visa Team · 15 min read · March 2026</div>
+      <div style="font-size:12px;color:var(--text-muted);margin-bottom:24px;">By R-Pro Travels Visa Team · 15 min read · March 2026</div>
       <button class="btn-primary">Read Full Guide →</button>
     </div>
   </div>
   <div class="blog-grid">
     <div class="blog-card"><div class="blog-thumb t1">✈️</div><div class="blog-body"><div class="blog-category">Visa Tips</div><div class="blog-title">How to Prepare Your Bank Statement for a Schengen Visa</div><div class="blog-excerpt">The bank statement is the #1 reason Schengen visas get rejected. Here's exactly what embassies look for.</div><div class="blog-meta"><span class="blog-date">Mar 20, 2026</span><span class="blog-read">8 min read</span></div></div></div>
     <div class="blog-card"><div class="blog-thumb t2">🏥</div><div class="blog-body"><div class="blog-category">Medical Tourism</div><div class="blog-title">India vs Thailand: Which is Better for Heart Surgery in 2026?</div><div class="blog-excerpt">A detailed comparison of costs, hospital quality and recovery conditions for cardiac surgery in Asia.</div><div class="blog-meta"><span class="blog-date">Mar 15, 2026</span><span class="blog-read">12 min read</span></div></div></div>
-    <div class="blog-card"><div class="blog-thumb t3">💰</div><div class="blog-body"><div class="blog-category">Money & Travel</div><div class="blog-title">How to Travel From Nigeria Without Losing Money on Exchange Rates</div><div class="blog-excerpt">Prepaid travel cards, best time to exchange Naira and how our R-Pro Prepaid Card saves you 8-15%.</div><div class="blog-meta"><span class="blog-date">Mar 10, 2026</span><span class="blog-read">6 min read</span></div></div></div>
+    <div class="blog-card"><div class="blog-thumb t3">💰</div><div class="blog-body"><div class="blog-category">Money & Travel</div><div class="blog-title">How to Travel From Nigeria Without Losing Money on Exchange Rates</div><div class="blog-excerpt">Prepaid travel cards, best time to exchange Naira and how our R-Pro Travels Prepaid Card saves you 8-15%.</div><div class="blog-meta"><span class="blog-date">Mar 10, 2026</span><span class="blog-read">6 min read</span></div></div></div>
     <div class="blog-card"><div class="blog-thumb t4">🛂</div><div class="blog-body"><div class="blog-category">Destination Guide</div><div class="blog-title">Dubai on a Budget: How to Enjoy the UAE for Under ₦1.5m</div><div class="blog-excerpt">Luxury experiences don't have to cost luxury prices. Our Dubai experts reveal the best value tips.</div><div class="blog-meta"><span class="blog-date">Mar 5, 2026</span><span class="blog-read">9 min read</span></div></div></div>
-    <div class="blog-card"><div class="blog-thumb t5">🎓</div><div class="blog-body"><div class="blog-category">Study Abroad</div><div class="blog-title">Canada Study Permit 2026: New Rules Every Nigerian Applicant Must Know</div><div class="blog-excerpt">Canada tightened study permit rules in late 2025. Here's what changed and how R-Pro navigates it.</div><div class="blog-meta"><span class="blog-date">Feb 28, 2026</span><span class="blog-read">10 min read</span></div></div></div>
+    <div class="blog-card"><div class="blog-thumb t5">🎓</div><div class="blog-body"><div class="blog-category">Study Abroad</div><div class="blog-title">Canada Study Permit 2026: New Rules Every Nigerian Applicant Must Know</div><div class="blog-excerpt">Canada tightened study permit rules in late 2025. Here's what changed and how R-Pro Travels navigates it.</div><div class="blog-meta"><span class="blog-date">Feb 28, 2026</span><span class="blog-read">10 min read</span></div></div></div>
     <div class="blog-card"><div class="blog-thumb t6">🌍</div><div class="blog-body"><div class="blog-category">Destination Guide</div><div class="blog-title">10 African Countries Nigerians Can Visit Visa-Free in 2026</div><div class="blog-excerpt">A complete list of visa-free and visa-on-arrival destinations for Nigerian passport holders.</div><div class="blog-meta"><span class="blog-date">Feb 20, 2026</span><span class="blog-read">5 min read</span></div></div></div>
   </div>
   <div style="max-width:1200px;margin:64px auto 0;background:linear-gradient(135deg,var(--navy),#8b0017);border:1px solid rgba(255,255,255,0.15);border-radius:16px;padding:60px;text-align:center;">
     <div style="font-family:var(--font-display);font-size:40px;font-weight:600;color:#ffffff;margin-bottom:12px;">Never Miss a <em style="color:#ff8fa0;font-style:italic;">Travel Deal</em></div>
-    <p style="font-size:16px;color:rgba(255,255,255,0.7);max-width:500px;margin:0 auto 32px;line-height:1.6;">Visa updates, flight deals, medical tourism news and exclusive R-Pro offers — every week.</p>
+    <p style="font-size:16px;color:rgba(255,255,255,0.7);max-width:500px;margin:0 auto 32px;line-height:1.6;">Visa updates, flight deals, medical tourism news and exclusive R-Pro Travels offers — every week.</p>
     <div style="display:flex;gap:12px;max-width:480px;margin:0 auto;">
       <input type="email" placeholder="Your email address" style="flex:1;padding:14px 16px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);border-radius:6px;color:#ffffff;font-family:var(--font-body);font-size:14px;outline:none;">
       <button class="btn-primary" style="white-space:nowrap;">Subscribe →</button>
@@ -1499,15 +1646,13 @@
     closeMobileNav();
   }
 
-  // Nav scroll — subnav hides, main nav moves up
+  // Nav scroll
   const navbar = document.getElementById('navbar');
   let lastScroll = 0;
   window.addEventListener('scroll', () => {
     const scrollY = window.scrollY;
     navbar.classList.toggle('scrolled', scrollY > 60);
     document.getElementById('scrollTop').classList.toggle('visible', scrollY > 300);
-
-    // Hide subnav after 80px scroll
     if (scrollY > 80) {
       document.body.classList.add('nav-scrolled');
     } else {
@@ -1538,7 +1683,6 @@
     });
     localStorage.setItem('rpro-theme', isDark ? 'light' : 'dark');
   }
-  // Restore saved theme
   const savedTheme = localStorage.getItem('rpro-theme');
   if (savedTheme) {
     document.documentElement.setAttribute('data-theme', savedTheme);
@@ -1547,7 +1691,7 @@
     }
   }
 
-  // Book page tabs (visual only)
+  // Book page tabs
   function selectBTab(el) {
     document.querySelectorAll('.btab').forEach(b => b.classList.remove('active'));
     el.classList.add('active');
@@ -1590,7 +1734,7 @@
   function hideCookie() { document.getElementById('cookieBanner').classList.remove('show'); }
 
   // Fade-in on scroll
-  const fadeEls = document.querySelectorAll('.ai-card, .service-card, .med-card, .testi-card, .plan-card, .dest-card, .corp-card, .blog-card, .med-country-card, .dest-full-card, .visa-country-card');
+  const fadeEls = document.querySelectorAll('.ai-card, .service-card, .med-card, .testi-card, .plan-card, .dest-card, .corp-card, .blog-card, .med-country-card, .dest-full-card, .visa-country-card, .partner-tag, .airline-pill');
   const fadeObs = new IntersectionObserver((entries) => {
     entries.forEach(e => {
       if (e.isIntersecting) {
