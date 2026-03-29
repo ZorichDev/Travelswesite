@@ -38,6 +38,8 @@
     --success: #1A6B3C;
     --font-display: 'Cormorant Garamond', serif;
     --font-body: 'Outfit', sans-serif;
+    --subnav-bg: #001a5c;
+    --subnav-border: rgba(255,255,255,0.1);
   }
 
   /* ── DARK THEME ── */
@@ -66,6 +68,8 @@
     --hero-text: #ffffff;
     --hero-sub: rgba(255,255,255,0.65);
     --success: #2a9b5a;
+    --subnav-bg: #05050f;
+    --subnav-border: rgba(255,255,255,0.06);
   }
 
   html { scroll-behavior: smooth; }
@@ -77,10 +81,72 @@
     transition: background 0.35s ease, color 0.35s ease;
   }
 
-  /* ── NAV ── */
+  /* ── TOP SUB-NAV ── */
+  .top-subnav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1001;
+    height: 40px;
+    background: var(--subnav-bg);
+    border-bottom: 1px solid var(--subnav-border);
+    display: flex; align-items: center;
+    padding: 0 48px;
+    transition: all 0.35s ease;
+  }
+  .top-subnav-inner {
+    width: 100%; max-width: 100%;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .top-subnav-left {
+    display: flex; align-items: center; gap: 20px;
+  }
+  .top-subnav-item {
+    font-size: 11px; font-weight: 500; color: rgba(255,255,255,0.55);
+    letter-spacing: 0.04em; display: flex; align-items: center; gap: 5px;
+  }
+  .top-subnav-item span { font-size: 11px; }
+  .top-subnav-divider {
+    width: 1px; height: 14px; background: rgba(255,255,255,0.15);
+  }
+  .top-subnav-right {
+    display: flex; align-items: center; gap: 14px;
+  }
+  /* Dark mode toggle in subnav */
+  .dark-toggle {
+    width: 44px; height: 22px; border-radius: 11px;
+    background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25);
+    cursor: pointer; position: relative; transition: all 0.3s; flex-shrink: 0;
+    display: flex; align-items: center; padding: 2px;
+  }
+  [data-theme="dark"] .dark-toggle { background: rgba(232,49,77,0.2); border-color: rgba(232,49,77,0.4); }
+  .dark-toggle-knob {
+    width: 16px; height: 16px; border-radius: 50%;
+    background: #ffffff; transition: all 0.3s; display: flex; align-items: center; justify-content: center;
+    font-size: 9px; box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+    transform: translateX(0);
+  }
+  [data-theme="dark"] .dark-toggle-knob { transform: translateX(22px); background: var(--red); }
+  .dark-toggle-label {
+    font-size: 10px; font-weight: 500; color: rgba(255,255,255,0.5);
+    letter-spacing: 0.06em; text-transform: uppercase;
+  }
+  .dark-toggle-wrap { display: flex; align-items: center; gap: 7px; }
+
+  /* Start Your Journey btn in subnav */
+  .btn-subnav {
+    padding: 5px 16px;
+    background: var(--red);
+    color: #ffffff;
+    font-family: var(--font-body);
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 0.07em; border: none; cursor: pointer; border-radius: 3px;
+    text-transform: uppercase; transition: all 0.2s; white-space: nowrap;
+    text-decoration: none; display: inline-flex; align-items: center; gap: 5px;
+  }
+  .btn-subnav:hover { background: var(--red-light); }
+
+  /* ── MAIN NAV ── */
   nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-    height: 72px; display: flex; align-items: center; justify-content: space-between;
+    position: fixed; top: 40px; left: 0; right: 0; z-index: 1000;
+    height: 64px; display: flex; align-items: center; justify-content: space-between;
     padding: 0 48px;
     background: transparent;
     border-bottom: 1px solid transparent;
@@ -92,15 +158,30 @@
     border-bottom: 1px solid var(--nav-border);
     box-shadow: 0 2px 24px rgba(0,0,0,0.08);
   }
+
+  /* When scrolled, subnav hides and nav moves to top */
+  body.nav-scrolled .top-subnav {
+    transform: translateY(-100%);
+    pointer-events: none;
+  }
+  body.nav-scrolled nav {
+    top: 0;
+  }
+
   .nav-logo {
     font-family: var(--font-display);
     font-size: 26px; font-weight: 700; color: var(--hero-text);
     letter-spacing: 0.02em; text-decoration: none; cursor: pointer;
-    transition: color 0.3s;
+    transition: color 0.3s; flex-shrink: 0;
   }
   nav.scrolled .nav-logo { color: var(--white); }
   .nav-logo span { color: var(--red); }
-  .nav-links { display: flex; align-items: center; gap: 4px; list-style: none; }
+
+  /* Centered links */
+  .nav-links {
+    display: flex; align-items: center; gap: 4px; list-style: none;
+    position: absolute; left: 50%; transform: translateX(-50%);
+  }
   .nav-item { position: relative; }
   .nav-links a, .nav-links button.nav-link-btn {
     font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.85);
@@ -139,41 +220,7 @@
   .dropdown-icon { font-size: 16px; width: 24px; text-align: center; }
   .dropdown-divider { height: 1px; background: var(--nav-border); margin: 6px 0; }
 
-  /* Nav right */
-  .nav-right { display: flex; align-items: center; gap: 12px; }
-  .nav-currency { font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.7); letter-spacing: 0.08em; cursor: pointer; }
-  nav.scrolled .nav-currency { color: var(--text-muted); }
-
-  /* Dark mode toggle */
-  .dark-toggle {
-    width: 44px; height: 24px; border-radius: 12px;
-    background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.3);
-    cursor: pointer; position: relative; transition: all 0.3s; flex-shrink: 0;
-    display: flex; align-items: center; padding: 2px;
-  }
-  nav.scrolled .dark-toggle {
-    background: var(--input-bg);
-    border-color: var(--input-border);
-  }
-  .dark-toggle-knob {
-    width: 18px; height: 18px; border-radius: 50%;
-    background: #ffffff; transition: all 0.3s; display: flex; align-items: center; justify-content: center;
-    font-size: 10px; box-shadow: 0 1px 4px rgba(0,0,0,0.2);
-    transform: translateX(0);
-  }
-  [data-theme="dark"] .dark-toggle-knob { transform: translateX(20px); background: var(--red); }
-  [data-theme="dark"] .dark-toggle { background: rgba(232,49,77,0.2); border-color: rgba(232,49,77,0.4); }
-
-  .btn-nav {
-    padding: 10px 24px; background: var(--red); color: #ffffff;
-    font-family: var(--font-body); font-size: 13px; font-weight: 700;
-    letter-spacing: 0.06em; border: none; cursor: pointer; border-radius: 4px;
-    text-transform: uppercase; transition: all 0.2s; white-space: nowrap;
-    text-decoration: none; display: inline-flex; align-items: center;
-  }
-  .btn-nav:hover { background: var(--red-light); transform: translateY(-1px); }
-
-  /* Hamburger */
+  /* Hamburger (mobile) */
   .hamburger {
     display: none; flex-direction: column; gap: 5px; cursor: pointer;
     background: none; border: none; padding: 4px;
@@ -189,13 +236,14 @@
 
   /* Mobile nav drawer */
   .mobile-nav {
-    display: none; position: fixed; top: 72px; left: 0; right: 0; z-index: 999;
+    display: none; position: fixed; top: 104px; left: 0; right: 0; z-index: 999;
     background: var(--nav-bg); border-bottom: 1px solid var(--nav-border);
     padding: 16px 24px 24px; flex-direction: column; gap: 4px;
     box-shadow: 0 8px 32px rgba(0,0,0,0.1);
     backdrop-filter: blur(20px);
     animation: slideDown 0.25s ease;
   }
+  body.nav-scrolled .mobile-nav { top: 64px; }
   @keyframes slideDown { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
   .mobile-nav.open { display: flex; }
   .mobile-nav a, .mobile-nav-section-title {
@@ -218,6 +266,7 @@
   .hero {
     position: relative; min-height: 100vh;
     display: flex; flex-direction: column; justify-content: center; overflow: hidden;
+    /* account for subnav + nav height */
   }
   .hero-bg {
     position: absolute; inset: 0;
@@ -236,7 +285,7 @@
   .orb2 { position: absolute; width: 400px; height: 400px; border-radius: 50%; background: radial-gradient(circle, rgba(0,48,135,0.4) 0%, transparent 70%); bottom: -50px; left: 100px; animation: float2 10s ease-in-out infinite; }
   @keyframes float1 { 0%,100%{transform:translate(0,0) scale(1);} 50%{transform:translate(-30px,40px) scale(1.05);} }
   @keyframes float2 { 0%,100%{transform:translate(0,0) scale(1);} 50%{transform:translate(20px,-30px) scale(1.08);} }
-  .hero-content { position: relative; z-index: 2; padding: 0 48px; max-width: 1200px; width: 100%; margin: 0 auto; padding-top: 120px; }
+  .hero-content { position: relative; z-index: 2; padding: 0 48px; max-width: 1200px; width: 100%; margin: 0 auto; padding-top: 140px; }
   .hero-badge { display: inline-flex; align-items: center; gap: 10px; padding: 8px 18px; border: 1px solid rgba(255,255,255,0.3); border-radius: 100px; margin-bottom: 32px; background: rgba(255,255,255,0.1); animation: pulse-border 3s ease-in-out infinite; }
   @keyframes pulse-border { 0%,100%{border-color:rgba(255,255,255,0.3);} 50%{border-color:rgba(200,16,46,0.8);} }
   .badge-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--red); animation: pulse-dot 2s ease-in-out infinite; }
@@ -657,7 +706,7 @@
   .visa-checker-widget { background: var(--card-bg); border: var(--card-border); border-radius: 12px; padding: 32px; box-shadow: 0 4px 24px rgba(0,48,135,0.08); }
   .visa-checker-title { font-family: var(--font-display); font-size: 24px; font-weight: 600; color: var(--white); margin-bottom: 20px; }
   .visa-countries-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
-  .visa-country-card { background: var(--card-bg); border: var(--card-border); border-radius: 10px; padding: 20px; cursor: pointer; transition: all 0.25s; box-shadow: 0 2px 8px rgba(0,48,135,0.04); }
+  .visa-country-card { background: var(--card-bg); border: var(--card-border); border-radius: 10px; padding: 20px; cursor: pointer; transition: all 0.25px; box-shadow: 0 2px 8px rgba(0,48,135,0.04); }
   .visa-country-card:hover { background: rgba(200,16,46,0.05); border-color: rgba(200,16,46,0.4); transform: translateY(-2px); }
   .visa-country-flag { font-size: 32px; margin-bottom: 10px; }
   .visa-country-name { font-size: 16px; font-weight: 700; color: var(--white); margin-bottom: 4px; }
@@ -688,13 +737,15 @@
     .step:not(:last-child)::after { display: none; }
     .book-tabs-full { grid-template-columns: repeat(2, 1fr); }
     .search-banner-inner { flex-direction: column; align-items: flex-start; gap: 20px; }
+    .nav-links { position: static; transform: none; }
   }
   @media (max-width: 768px) {
-    nav { padding: 0 20px; }
+    .top-subnav { padding: 0 16px; }
+    .top-subnav-left { display: none; }
+    nav { padding: 0 20px; height: 56px; }
     .nav-links { display: none; }
     .hamburger { display: flex; }
-    .dark-toggle { display: flex; }
-    .hero-content { padding: 0 20px; padding-top: 100px; }
+    .hero-content { padding: 0 20px; padding-top: 120px; }
     .search-banner, .features-strip, .services-section, .destinations-section, .medical-section, .ai-section, .visa-section, .testimonials-section, .rova-section, footer { padding-left: 20px; padding-right: 20px; }
     .page-hero, .book-section, .contact-section, .blog-section, .corp-section, .dest-page-section, .med-page-section, .visa-page-section { padding-left: 20px; padding-right: 20px; }
     .ai-grid, .services-grid, .testimonials-grid, .dest-full-grid, .blog-grid, .corp-solutions, .offices-grid { grid-template-columns: 1fr; }
@@ -711,12 +762,36 @@
     .book-cta-card { padding: 32px 20px; }
     .hero-ctas { flex-direction: column; align-items: flex-start; }
     .btn-primary, .btn-outline { width: 100%; justify-content: center; }
+    .mobile-nav { top: 96px; }
+    body.nav-scrolled .mobile-nav { top: 56px; }
   }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
+<!-- ── TOP SUB-NAV ── -->
+<div class="top-subnav" id="topSubnav">
+  <div class="top-subnav-inner">
+    <div class="top-subnav-left">
+      <div class="top-subnav-item"><span>💬</span> WhatsApp: +234 800 RPROTRAVEL</div>
+      <div class="top-subnav-divider"></div>
+      <div class="top-subnav-item"><span>✉️</span> hello@rprotravels.com</div>
+      <div class="top-subnav-divider"></div>
+      <div class="top-subnav-item"><span>⏰</span> Mon–Fri 8am–7pm · Sat 9am–5pm</div>
+    </div>
+    <div class="top-subnav-right">
+      <div class="dark-toggle-wrap">
+        <span class="dark-toggle-label">Dark</span>
+        <div class="dark-toggle" id="darkToggle" onclick="toggleDark()" title="Toggle dark mode">
+          <div class="dark-toggle-knob" id="toggleKnob">🌙</div>
+        </div>
+      </div>
+      <a class="btn-subnav" href="https://rprotravels.com/" target="_blank" rel="noopener">Start Your Journey →</a>
+    </div>
+  </div>
+</div>
+
+<!-- ── MAIN NAV ── -->
 <nav id="navbar">
   <div class="nav-logo" onclick="showPage('home')">R-Pro<span>.</span></div>
   <ul class="nav-links">
@@ -735,16 +810,9 @@
     <li><a onclick="showPage('contact')" style="cursor:pointer;">Contact Us</a></li>
     <li><a onclick="showPage('blog')" style="cursor:pointer;">Blog</a></li>
   </ul>
-  <div class="nav-right">
-    <span class="nav-currency">₦ / $ / £</span>
-    <div class="dark-toggle" id="darkToggle" onclick="toggleDark()" title="Toggle dark mode">
-      <div class="dark-toggle-knob" id="toggleKnob">🌙</div>
-    </div>
-    <a class="btn-nav" href="https://rprotravels.com/" target="_blank" rel="noopener">Start Your Journey</a>
-    <button class="hamburger" id="hamburger" onclick="toggleMobileNav()" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
+  <button class="hamburger" id="hamburger" onclick="toggleMobileNav()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
 <!-- MOBILE NAV -->
@@ -792,7 +860,7 @@
   </div>
 </section>
 
-<!-- SEARCH BANNER (replaces booking engine) -->
+<!-- SEARCH BANNER -->
 <section class="search-banner">
   <div class="search-banner-inner">
     <div class="search-banner-text">
@@ -1431,11 +1499,21 @@
     closeMobileNav();
   }
 
-  // Nav scroll
+  // Nav scroll — subnav hides, main nav moves up
   const navbar = document.getElementById('navbar');
+  let lastScroll = 0;
   window.addEventListener('scroll', () => {
-    navbar.classList.toggle('scrolled', window.scrollY > 60);
-    document.getElementById('scrollTop').classList.toggle('visible', window.scrollY > 300);
+    const scrollY = window.scrollY;
+    navbar.classList.toggle('scrolled', scrollY > 60);
+    document.getElementById('scrollTop').classList.toggle('visible', scrollY > 300);
+
+    // Hide subnav after 80px scroll
+    if (scrollY > 80) {
+      document.body.classList.add('nav-scrolled');
+    } else {
+      document.body.classList.remove('nav-scrolled');
+    }
+    lastScroll = scrollY;
   });
 
   // Mobile nav
@@ -1469,7 +1547,7 @@
     }
   }
 
-  // Book page tabs (visual only now)
+  // Book page tabs (visual only)
   function selectBTab(el) {
     document.querySelectorAll('.btab').forEach(b => b.classList.remove('active'));
     el.classList.add('active');
